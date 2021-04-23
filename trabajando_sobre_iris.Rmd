@@ -1,0 +1,30 @@
+---
+title: "trabajando sobre la data iris"
+author: "Marcos"
+date: "23-04-2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+data(iris)
+```
+
+## INTRODUCCION
+### trabajando sobre data iris
+El nombre de las columnas en la data iris son:`r colnames(iris)`.
+
+Por otra parte la media de cada columna por cada especie se resume en la siguiente tabla:
+```{r}
+data(iris)
+tabla<-iris %>% group_by(Species) %>% summarise_all(mean)
+kable(tabla, digits = 2, caption = "medias por especie") %>% kable_styling(bootstrap_options = c("striped","hover", "condensed"), full_width = FALSE)%>% scroll_box(width = "800px", height = "200px")
+```
+
+
+
+
+
